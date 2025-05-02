@@ -1,0 +1,17 @@
+Package: agdist
+Type: Package
+Title: Antigenic Distance Calculations for Influenza
+Version: 0.1.0
+Authors@R: c(
+    person("Andreas", "Handel", email = "andreas.handel@gmail.com", role = c("aut"), comment = c(ORCID = "0000-0002-4622-1146") ),
+    person("Zane", "Billings",  role = "aut", "cre"), 
+  )
+Description: More about what it does (maybe more than one line).
+    Continuation lines should be indented.
+License: GPL-3
+Encoding: UTF-8
+LazyData: TRUE
+Imports:
+    dplyr
+Depends:
+    R (>= 4.0.0)
