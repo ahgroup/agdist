@@ -1,0 +1,38 @@
+url: https://ahgroup.github.io/agdist/index.html
+
+template:
+  bootstrap: 5
+navbar:
+  structure:
+    left:
+    - home
+    - intro
+    - articles
+    - reference
+    - news
+    right:
+    - github
+  components:
+    home:
+      icon: fa-home fa-lg
+      href: index.html
+    intro:
+      text: Get started
+      href: articles/quickstart.html
+    articles:
+      text: Tutorials
+      menu:
+        - text: Get started
+          href: articles/quickstart.html
+        - text: More details
+          href: articles/moredetails.html
+    reference:
+      text: Reference
+      href: reference/index.html
+    news:
+      text: Changelog
+      href: news/index.html
+    github:
+      icon: fab fa-github
+      href: https://github.com/ahgroup/agdist
+

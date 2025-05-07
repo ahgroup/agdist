@@ -1,0 +1,40 @@
+---
+title: More details on how to use agdist 
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{A quick start to agdist}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7
+)
+
+# avoid check where vignette filename must equal the vignette title
+options(rmarkdown.html_vignette.check_title = FALSE)
+```
+
+```{r setup, include = FALSE}
+pkg = 'agdist' #so we can easily switch names
+library(pkg, character.only = TRUE)
+```
+
+
+## Details on required data format
+
+
+## Details on p-epitope
+
+
+## Details on cartography
+
+
+## Next steps
+

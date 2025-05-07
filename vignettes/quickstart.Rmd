@@ -1,0 +1,56 @@
+---
+title: A quick start to agdist 
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{A quick start to agdist}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7
+)
+
+# avoid check where vignette filename must equal the vignette title
+options(rmarkdown.html_vignette.check_title = FALSE)
+```
+
+```{r setup, include = FALSE}
+pkg = 'agdist' #so we can easily switch names
+library(pkg, character.only = TRUE)
+```
+
+## Overview
+
+**`r pkg`** is designed to allow you convenient computation of antigenic distance metrics for influenza (and possibly other pathogens). 
+
+
+
+## Installation
+
+**`r pkg`** is not yet on CRAN. You need to install it from GitHub as follows:
+
+* Install the `remotes` package
+* Install **`r pkg`** with `remotes::install_github('ahgroup/agdist')`
+
+
+## Starting Example
+
+Here is a simple example to illustrate what **`r pkg`** does.
+
+Consider 
+
+
+## Another example
+
+
+## Next steps
+
+You just learned the basics of using **`r pkg`** to compute antigenic distances.
+To dig deeper, you should continue with [this vignette](./moredetails.html).
