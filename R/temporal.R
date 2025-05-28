@@ -1,18 +1,27 @@
 #' Extract 4-digit Years from Strings
 #'
-#' This function extracts 4-digit years (in the range 1900–2099) from a vector of strings.
+#' This function extracts 4-digit years (in the range 1900–2099) from a vector
+#' of strings.
 #'
-#' @param full_name A character vector containing strings with embedded 4-digit years.
+#' @param full_name A character vector containing strings with embedded 4-digit
+#'   years.
 #'
-#' @return An integer named vector of years, with names corresponding to the input strings.
-#' If no year is found in a string, the corresponding value will be `NA`.
+#' @return An integer named vector of years, with names corresponding to the
+#'   input strings. If no year is found in a string, the corresponding value
+#'   will be `NA`.
 #'
 #' @examples
-# extract_year(c(
-#   "A/H1N1/South Carolina/1/1918",
-#   "A/H3N2/Darwin/9/2021",
-#   "B/Sichuan/379/1999"
-# ))
+#' extract_year(c(
+#'   "A/H1N1/South Carolina/1/1918",
+#'   "A/H3N2/Darwin/9/2021",
+#'   "B/Sichuan/379/1999"
+#' ))
+#' seqs <- c(
+#'   "A/H1N1/South Carolina/1/1918" = "mktiialsyifclvlgqdfpgndnstatlclgh",
+#'   "A/H3N2/Darwin/9/2021" = "mktiialsnilclvfaqkipgndnstat",
+#'   "B/Sichuan/379/1999" = "drictgitssnsphvvktatqgevnvtgai"
+#' )
+#' extract_year(seqs)
 #'
 #' @export
 extract_year <- function(full_name) {
@@ -43,19 +52,22 @@ extract_year <- function(full_name) {
 
 #' Compute Temporal Distance Matrix Between Sequences
 #'
-#' Computes a pairwise distance matrix based on the year embedded in sequence names.
-#' Supported methods are `"absolute"` (symmetric), `"forward"` (x - y), and `"backward"` (y - x).
+#' Computes a pairwise distance matrix based on the year embedded in sequence
+#' names. Supported methods are `"absolute"` (symmetric), `"forward"` (x - y),
+#' and `"backward"` (y - x).
 #'
 #' @param seqs A named character vector. The names must contain 4-digit years.
-#' @param temp_dir The method used for computing temporal distance. One of `"absolute"` (default), `"forward"`, or `"backward"`.
+#' @param temp_dir The method used for computing temporal distance. One of
+#'   `"absolute"` (default), `"forward"`, or `"backward"`.
 #'
 #' @return A square numeric matrix of pairwise temporal distances.
 #'
-#' @details This function extracts years from the names of `seqs` using a regular expression,
-#' then computes pairwise temporal distances using the specified method.
+#' @details This function extracts years from the names of `seqs` using a
+#'   regular expression, then computes pairwise temporal distances using the
+#'   specified method.
 #'
-#' Which distance is "backwards" or "forwards" is semantic and depends on the
-#' order of your strain names. They are both provided for convenience.
+#'   Which distance is "backwards" or "forwards" is semantic and depends on the
+#'   order of your strain names. They are both provided for convenience.
 #'
 #' @examples
 #' seqs <- c(

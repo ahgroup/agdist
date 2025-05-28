@@ -1,3 +1,32 @@
+#' Extract Specific Characters from a String by Position
+#'
+#' This helper function extracts one or more characters from a string using
+#' their byte positions. It converts the input string to raw bytes, selects the
+#' specified positions, and converts them back to a character.
+#'
+#' This is often faster and easier than splitting the string, subsetting,
+#' and pasting the string back together.
+#'
+#' @param str A character string from which characters will be extracted.
+#' @param pos An integer vector of positions (1-based) indicating which
+#'   characters to extract.
+#'
+#' @return A character string containing the extracted characters.
+#'
+#' @examples
+#' extract_string_chars("hello", c(1, 2))  # Returns "he"
+#'
+#' @note This function operates at the raw byte level and may not behave as
+#'   expected with multibyte or non-ASCII characters. For the purposes of
+#'   this package, all validated sequence strings will only contain
+#'   ASCII strings and this will work as expected.
+#'
+#' @export
+extract_string_chars <- function(str, pos) {
+  sub <- charToRaw(str)[pos]
+  return(rawToChar(sub))
+}
+
 #' Validate a sequence vector
 #'
 #' The input vector must be a character vector. Additional checks can be imposed
