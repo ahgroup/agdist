@@ -58,11 +58,11 @@ extract_year <- function(full_name) {
 #' order of your strain names. They are both provided for convenience.
 #'
 #' @examples
-# seqs <- c(
-#   "A/H1N1/South Carolina/1/1918" = "mktiialsyifclvlgqdfpgndnstatlclgh",
-#   "A/H3N2/Darwin/9/2021" = "mktiialsnilclvfaqkipgndnstat",
-#   "B/Sichuan/379/1999" = "drictgitssnsphvvktatqgevnvtgai"
-# )
+#' seqs <- c(
+#'   "A/H1N1/South Carolina/1/1918" = "mktiialsyifclvlgqdfpgndnstatlclgh",
+#'   "A/H3N2/Darwin/9/2021" = "mktiialsnilclvfaqkipgndnstat",
+#'   "B/Sichuan/379/1999" = "drictgitssnsphvvktatqgevnvtgai"
+#' )
 # dist_temporal(seqs, "absolute")
 #'
 #' @export
