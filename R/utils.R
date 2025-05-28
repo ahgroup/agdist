@@ -148,3 +148,118 @@ remove_ambiguous_residues <- function(seqs, ambiguous_residues = "xX?") {
   return(seq_out)
 }
 
+#' Convert a distance matrix to tidy format
+#'
+#' Transforms a square numeric distance matrix into a long-format tibble with
+#' customizable names for the row and column variables. Optionally, returns only
+#' unique row-column combinations (i.e., lower triangle).
+#'
+#' @param d A square numeric matrix (or coercible to one) with row and column
+#'   names.
+#' @param rows_to A string (length 1) naming the new column for row labels.
+#'   Default is `"Strain1"`.
+#' @param cols_to A string (length 1) naming the new column for column labels.
+#'   Default is `"Strain2"`.
+#' @param unique_pairs Logical (length 1). If `TRUE`, return only the unique
+#'   row-column combinations from the lower triangle and diagonal of the matrix.
+#'   Defaults to `FALSE`.
+#'
+#' @return A tibble in long format with columns:
+#' \describe{
+#'   \item{[rows_to]}{Factor, ordered by the row order of `d`}
+#'   \item{[cols_to]}{Factor, ordered and reversed from column order of `d`}
+#'   \item{d}{Distance value between row and column entries}
+#' }
+#'
+#' @examples
+#' mat <- matrix(1:9, nrow = 3)
+#' rownames(mat) <- colnames(mat) <- c("A", "B", "C")
+#' tidy_dist_mat(mat)
+#' tidy_dist_mat(mat, unique_pairs = TRUE)
+#'
+#' @export
+tidy_dist_mat <- function(d,
+                          rows_to = "Strain1",
+                          cols_to = "Strain2",
+                          unique_pairs = FALSE) {
+
+  # Validate option arguments
+  if (!is.character(rows_to) || length(rows_to) != 1) {
+    cli::cli_abort("{.arg rows_to} must be a character vector of length 1.")
+  }
+  if (!is.character(cols_to) || length(cols_to) != 1) {
+    cli::cli_abort("{.arg cols_to} must be a character vector of length 1.")
+  }
+  if (!is.logical(unique_pairs) || length(unique_pairs) != 1) {
+    cli::cli_abort((
+      "{.arg unique_pairs} must be a logical (TRUE or FALSE) of length 1."
+    ))
+  }
+
+  # Validate d matrix
+  if (is.data.frame(d) || tibble::is_tibble(d)) {
+    d <- as.matrix(d)
+  }
+  if (!is.matrix(d) || !is.numeric(d)) {
+    cli::cli_abort(
+      "{.arg d} must be a numeric matrix (or a data frame coercible to one)."
+    )
+  }
+  if (nrow(d) != ncol(d)) {
+    cli::cli_abort(paste0(
+      "{.arg d} must be a square matrix: it has {nrow(d)} rows and {ncol(d)} ",
+      "columns."
+    ))
+  }
+  if (is.null(rownames(d)) || is.null(colnames(d))) {
+    cli::cli_abort("{.arg d} must have both row names and column names.")
+  }
+
+  # Convert to tibble
+  df <- tibble::as_tibble(d, rownames = rows_to)
+
+  df_long <- tidyr::pivot_longer(
+    df,
+    cols = -dplyr::all_of(rows_to),
+    names_to = cols_to,
+    values_to = "d"
+  )
+
+  # Order factor levels
+  df_long[[rows_to]] <- forcats::fct_inorder(df_long[[rows_to]])
+  df_long[[cols_to]] <- forcats::fct_rev(forcats::fct_inorder(df_long[[cols_to]]))
+
+  # Filter for unique combinations if needed
+  if (isTRUE(unique_pairs)) {
+    # Get the unique row names and column names
+    rn <- levels(df_long[[rows_to]])
+    cn <- levels(df_long[[cols_to]])
+    # This part finds which rows of the tidy dataframe are in the lower triangle
+    # of the distance matrix
+    keep <- vapply(
+      seq_len(nrow(df_long)),
+      function(i) {
+        # For each row in the df, get the position of the unique row name
+        # and unique column name that are in that row, then compare the order.
+        # This makes sure we only include the observations that were in the
+        # lower triangle of the original distance matrix.
+        r_idx <- match(as.character(df_long[[rows_to]][i]), rn)
+        c_idx <- match(as.character(df_long[[cols_to]][i]), cn)
+        # check lower triangle (including diagonal)
+        # Because we reversed the index of the column names earlier we need to
+        # undo the reversal here to make sure the comparison is right
+        # But basically this checks if the row name comes before the col name
+        return(r_idx >= (length(cn) - c_idx + 1))
+      },
+      # Template for the returned object
+      logical(1)
+    )
+    # Now filter the dataframe so we only have the lower triangular indices
+    # Without dropping unique values
+    df_long <- df_long[keep, , drop = FALSE]
+  }
+
+  return(df_long)
+}
+
+

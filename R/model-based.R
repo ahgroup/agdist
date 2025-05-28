@@ -76,4 +76,68 @@ tree_to_distances.phylo <- function(x, ...) {
   return(tdm_sorted)
 }
 
+#' Extract distances from a pml object
+#'
+#' Computes the pairwise cophenetic distance matrix from a phylogenetic tree of
+#' class `pml` produced by the `phangorn` package.
+#' The output is sorted by tip labels.
+#'
+#' @param x A phylogenetic tree of class `pml` (from the `phangorn` package).
+#' @param ... Not used.
+#'
+#' @return An object of class `dist`, with the distances sorted by tip labels.
+#' @export
+#' @importFrom ape cophenetic.phylo
+#' @importForm phangorn pml
+#' @method tree_to_distances pml
+tree_to_distances.pml <- function(x, ...) {
+  requireNamespace("ape", quietly = TRUE)
+  requireNamespace("phangorn", quietly = TRUE)
+
+  tree_dist_matrix <- ape::cophenetic.phylo(x$tree)
+
+  # Sort the distance matrix by row and column names
+  sorted_labels <- sort(rownames(tree_dist_matrix))
+  tdm_sorted <- tree_dist_matrix[sorted_labels, sorted_labels]
+
+  return(tdm_sorted)
+}
+
+#' Default method for `tree_to_distances`
+#'
+#' This method is called when `tree_to_distances()` is used on an unsupported
+#' object class. It prints an informative message listing available methods.
+#'
+#' @param x An object of unsupported class.
+#' @param ... Not used.
+#'
+#' @return No return value; prints a message to the console.
+#' @export
+#' @method tree_to_distances default
+tree_to_distances.default <- function(x, ...) {
+  available_methods <- methods("tree_to_distances")
+  method_classes <- available_methods |>
+    as.character() |>
+    sub(pattern = "tree_to_distances\\.", replacement = "")
+
+  method_classes <- method_classes[!method_classes == "default"]
+
+  cli::cli_abort(c(
+    "!" = "No method available for objects of class {.cls {class(x)}}.",
+    "i" = "Methods are available for these classes: {.cls {method_classes}}."
+  ))
+
+  msg <- c(
+    "!" = "No method available for objects of class {.cls {class(x)}}.",
+    "i" = "Methods are available for these classes:",
+    setNames(
+      sprintf("- {.cls %s}", method_classes),
+      rep(" ", length(method_classes))
+    )
+  )
+
+  cli::cli_abort(msg)
+
+  invisible(x)
+}
 
