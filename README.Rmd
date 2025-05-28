@@ -41,11 +41,14 @@ These few lines of code produce a list of antigenic distances.
 # remotes::install_github('ahgroup/agdist')
 library(agdist)
 # load (and check) data
-sequencedata = read_sequence_file("sequence-file.csv")
+sequencedata <- read.csv("sequence-file.csv")
 # compute distances
-agdistances <- compute_distances(sequencedata, type = c("epitope","cartography"))
+agdistances <- compute_distances(
+  sequencedata$aligned_sequences,
+  method = "p-epitope"
+)
 # look at results
-display(agdistances)
+agdistances
 ```
 
 

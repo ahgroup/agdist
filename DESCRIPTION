@@ -10,11 +10,12 @@ Authors@R: c(
     person("Zane", "Billings",  role = "aut") 
   )
 Maintainer: Andreas Handel <andreas.handel@gmail.com>
-License: GPL-3
+License: AGPL (>= 3)
 Encoding: UTF-8
 LazyData: TRUE
 Imports:
-    dplyr
+    cli,
+    stringdist
 Depends:
     R (>= 4.0.0)
 Suggests: 
@@ -22,8 +23,8 @@ Suggests:
     knitr,
     pkgdown,
     rmarkdown,
-    roxygen2,
-    testthat
+    roxygen2
 VignetteBuilder: knitr
 URL: https://ahgroup.github.io/agdist/
 BugReports: https://github.com/ahgroup/agdist/issues
+Config/testthat/edition: 3

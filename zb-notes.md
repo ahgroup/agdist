@@ -14,8 +14,13 @@
   instead of only having the pairwise option.
   - string distances: basically just an interface to `stringdist` that does
   some preprocessing, it's written so that anything in the `...` gets passed
-  to the stringdist function.
+  to the stringdist function. Right now they get automatically length-normalized
+  but it should probably be an argument for whether they get normalized.
   - specialized sequence distances
+     * I didn't write the p-epitopes the crazy way Andreas wanted to, so if he
+     wants users to be able to supply their own sites he needs to add
+     that functionality. It doesn't even really make sense to do
+     p-epitope on B strains either.
      * dominant pepitope
      * p-all-epitope
      * grantham
