@@ -64,8 +64,8 @@
 <img src="logo.png" class="logo" alt=""><h1 id="agdist-">agdist <a class="anchor" aria-label="anchor" href="#agdist-"></a>
 </h1>
 </div>
-<!-- <!-- badges: start -->
-<p>–&gt; <!-- [![R-CMD-check](https://github.com/andreashandel/flowdiagramr/workflows/R-CMD-check/badge.svg)](https://github.com/andreashandel/flowdiagramr/actions) --> <!-- [![test-coverage](https://github.com/andreashandel/flowdiagramr/workflows/test-coverage/badge.svg)](https://github.com/andreashandel/flowdiagramr/actions) --> <!-- [![Codecov coverage](https://codecov.io/gh/andreashandel/flowdiagramr/branch/main/graph/badge.svg)](https://codecov.io/gh/andreashandel/flowdiagramr?branch=main) --> <!-- <!-- badges: end --> –&gt;</p>
+<!-- badges: start -->
+
 <p><strong>This package is still under active development. If you see this message, assume that several parts of the package don’t quite work yet.</strong></p>
 <div class="section level2">
 <h2 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
@@ -81,11 +81,14 @@
 <span><span class="co"># remotes::install_github('ahgroup/agdist')</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ahgroup.github.io/agdist/index.html">agdist</a></span><span class="op">)</span></span>
 <span><span class="co"># load (and check) data</span></span>
-<span><span class="va">sequencedata</span> <span class="op">=</span> <span class="fu">read_sequence_file</span><span class="op">(</span><span class="st">"sequence-file.csv"</span><span class="op">)</span></span>
+<span><span class="va">sequencedata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="st">"sequence-file.csv"</span><span class="op">)</span></span>
 <span><span class="co"># compute distances</span></span>
-<span><span class="va">agdistances</span> <span class="op">&lt;-</span> <span class="fu">compute_distances</span><span class="op">(</span><span class="va">sequencedata</span>, type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"epitope"</span>,<span class="st">"cartography"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">agdistances</span> <span class="op">&lt;-</span> <span class="fu">compute_distances</span><span class="op">(</span></span>
+<span>  <span class="va">sequencedata</span><span class="op">$</span><span class="va">aligned_sequences</span>,</span>
+<span>  method <span class="op">=</span> <span class="st">"p-epitope"</span></span>
+<span><span class="op">)</span></span>
 <span><span class="co"># look at results</span></span>
-<span><span class="fu">display</span><span class="op">(</span><span class="va">agdistances</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">agdistances</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="getting-started">Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
@@ -137,7 +140,13 @@
 </ul>
 </div>
 
-
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/ahgroup/agdist/actions" class="external-link"><img src="https://github.com/ahagroup/agdist/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://github.com/ahagroup/agdist/actions" class="external-link"><img src="https://github.com/ahgroup/agdist/workflows/test-coverage/badge.svg" alt="test-coverage"></a></li>
+</ul>
+</div>
 
   </aside>
 </div>

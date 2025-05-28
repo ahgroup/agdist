@@ -14,11 +14,11 @@ knitr::opts_chunk$set(
 
 ```{r setup, include = FALSE}
 pkg = 'agdist' #so we can easily switch names
-library(pkg, character.only = TRUE)
+#library(pkg, character.only = TRUE)
 ```
 
 
-agdist <img src="man/figures/logo.png" align="right" alt="" width="120" />
+# agdist <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 
 <!-- badges: start -->

@@ -3,13 +3,11 @@
 
 # agdist <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
-<!-- <!-- badges: start -->
+<!-- badges: start -->
 
-–\>
-<!-- [![R-CMD-check](https://github.com/andreashandel/flowdiagramr/workflows/R-CMD-check/badge.svg)](https://github.com/andreashandel/flowdiagramr/actions) -->
-<!-- [![test-coverage](https://github.com/andreashandel/flowdiagramr/workflows/test-coverage/badge.svg)](https://github.com/andreashandel/flowdiagramr/actions) -->
-<!-- [![Codecov coverage](https://codecov.io/gh/andreashandel/flowdiagramr/branch/main/graph/badge.svg)](https://codecov.io/gh/andreashandel/flowdiagramr?branch=main) -->
-<!-- <!-- badges: end --> –\>
+[![R-CMD-check](https://github.com/ahagroup/agdist/workflows/R-CMD-check/badge.svg)](https://github.com/ahgroup/agdist/actions)
+[![test-coverage](https://github.com/ahgroup/agdist/workflows/test-coverage/badge.svg)](https://github.com/ahagroup/agdist/actions)
+<!-- badges: end -->
 
 **This package is still under active development. If you see this
 message, assume that several parts of the package don’t quite work
@@ -28,11 +26,14 @@ These few lines of code produce a list of antigenic distances.
 # remotes::install_github('ahgroup/agdist')
 library(agdist)
 # load (and check) data
-sequencedata = read_sequence_file("sequence-file.csv")
+sequencedata <- read.csv("sequence-file.csv")
 # compute distances
-agdistances <- compute_distances(sequencedata, type = c("epitope","cartography"))
+agdistances <- compute_distances(
+  sequencedata$aligned_sequences,
+  method = "p-epitope"
+)
 # look at results
-display(agdistances)
+agdistances
 ```
 
 ## Getting Started
