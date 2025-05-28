@@ -21,7 +21,7 @@
 #'   "A/H3N2/Darwin/9/2021" = "mktiialsnilclvfaqkipgndnstat",
 #'   "B/Sichuan/379/1999" = "drictgitssnsphvvktatqgevnvtgai"
 #' )
-#' extract_year(seqs)
+#' extract_year(names(seqs))
 #'
 #' @export
 extract_year <- function(full_name) {

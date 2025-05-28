@@ -138,8 +138,8 @@ generate_FLU_matrix <- function() {
   )
 
   # Separate rates and equilibrium frequencies
-  equilibrium_frequencies <- tail(input_data, 20)
-  matrix_data <- head(input_data, length(input_data) - 20)
+  equilibrium_frequencies <- utils::tail(input_data, 20)
+  matrix_data <- utils::head(input_data, length(input_data) - 20)
 
   aa_order <- c("a", "r", "n", "d", "c", "q", "e", "g", "h", "i",
                 "l", "k", "m", "f", "p", "s", "t", "w", "y", "v")
@@ -191,6 +191,7 @@ generate_FLU_matrix <- function() {
 #' substitution model for influenza proteins. \emph{BMC Evolutionary Biology},
 #' 10, 99. \doi{10.1186/1471-2148-10-99}
 #'
+#'
 #' @export
 substitution <- function(seq1,
                          seq2,
@@ -224,7 +225,7 @@ substitution <- function(seq1,
   invalid_aa <- setdiff(used_aa, valid_aa)
 
   if (length(invalid_aa) > 0) {
-    cli::cli_art(paste0(
+    cli::cli_abort(paste0(
       "Sequences contain invalid amino acid characters: ",
       paste(invalid_aa, collapse = ", ")
     ))

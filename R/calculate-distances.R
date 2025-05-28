@@ -13,7 +13,7 @@
 #'   \itemize{
 #'     \item `"hamming"`: Computes Hamming distance.
 #'     \item `"dl"`: Computes Damerau-Levenshtein distance.
-#'     \item `"p-epitope"`: Computes p-epitope distances for a specified subtype, by default the dominant p-peitope distance is returned but you can access all arguments of \code{\link{dist_pepi()}}.
+#'     \item `"p-epitope"`: Computes p-epitope distances for a specified subtype, by default the dominant p-peitope distance is returned but you can access all arguments of \code{\link{dist_pepi}}.
 #'     \item `"p-all-epitope"`: Computes p-all-epitope distances for a subtype.
 #'     \item `"cophenetic"` or `"tree"`: Computes distances based on a phylogenetic tree.
 #'     \item `"cartographic"` or `"cartography"`: Computes cartographic distances from a Racmacs map.

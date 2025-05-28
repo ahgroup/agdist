@@ -16,6 +16,7 @@ navbar:
     home:
       icon: fa-home fa-lg
       href: index.html
+      aria-label: Return to homepage
     intro:
       text: Get started
       href: articles/quickstart.html
@@ -35,4 +36,5 @@ navbar:
     github:
       icon: fab fa-github
       href: https://github.com/ahgroup/agdist
+      aria-label: View source code on GitHub
 

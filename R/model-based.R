@@ -15,7 +15,6 @@
 #'   lower triangle is explicitly computed, and the upper triangle is filled by
 #'   symmetry.
 #'
-#' @importFrom Racmacs agCoords
 #' @examples
 #' \dontrun{
 #'   map <- Racmacs::read.acmap("my_map_file.ace")
@@ -31,7 +30,7 @@ racmaps_map_to_distances <- function(map) {
   strains <- rownames(coords)
 
   # Holder for results, sets diagonals to zero
-  res <- dist(coords)
+  res <- stats::dist(coords)
 
   # fill in the upper triangle
   out <- as.matrix(res)
@@ -62,7 +61,6 @@ tree_to_distances <- function(x, ...) {
 #'
 #' @return An object of class `dist`, with the distances sorted by tip labels.
 #' @export
-#' @importFrom ape cophenetic.phylo
 #' @method tree_to_distances phylo
 tree_to_distances.phylo <- function(x, ...) {
   requireNamespace("ape", quietly = TRUE)
@@ -86,9 +84,9 @@ tree_to_distances.phylo <- function(x, ...) {
 #' @param ... Not used.
 #'
 #' @return An object of class `dist`, with the distances sorted by tip labels.
+#'
 #' @export
-#' @importFrom ape cophenetic.phylo
-#' @importForm phangorn pml
+#'
 #' @method tree_to_distances pml
 tree_to_distances.pml <- function(x, ...) {
   requireNamespace("ape", quietly = TRUE)
@@ -115,7 +113,7 @@ tree_to_distances.pml <- function(x, ...) {
 #' @export
 #' @method tree_to_distances default
 tree_to_distances.default <- function(x, ...) {
-  available_methods <- methods("tree_to_distances")
+  available_methods <- utils::methods("tree_to_distances")
   method_classes <- available_methods |>
     as.character() |>
     sub(pattern = "tree_to_distances\\.", replacement = "")
@@ -130,7 +128,7 @@ tree_to_distances.default <- function(x, ...) {
   msg <- c(
     "!" = "No method available for objects of class {.cls {class(x)}}.",
     "i" = "Methods are available for these classes:",
-    setNames(
+    stats::setNames(
       sprintf("- {.cls %s}", method_classes),
       rep(" ", length(method_classes))
     )

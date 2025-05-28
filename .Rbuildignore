@@ -4,3 +4,8 @@
 ^docs$
 ^pkgdown$
 ^LICENSE\.md$
+^README.Rmd$
+^codecov.yml$
+test/
+^zb-notes.md$
+^'NULL'$

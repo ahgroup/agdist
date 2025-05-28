@@ -252,7 +252,7 @@ pepitope <- function(
     p_epi <- sum(epi_dists) / sum(lengths(p_epi_sites))
   } else if (mode == "median") {
     # Median instead of mean because Andreas likes the median.
-    p_epi <- median(epi_dists)
+    p_epi <- stats::median(epi_dists)
   } else if (is.null(mode) || is.na(mode) || mode == "" || mode == "epitope") {
     # If there's no summary mode specified, return the entire vector of
     # differences.

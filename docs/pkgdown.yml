@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   moredetails: moredetails.html
   quickstart: quickstart.html
-last_built: 2025-05-20T00:48Z
+last_built: 2025-05-28T20:59Z
 urls:
   reference: https://ahgroup.github.io/agdist/index.html/reference
   article: https://ahgroup.github.io/agdist/index.html/articles

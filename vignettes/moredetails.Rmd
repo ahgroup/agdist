@@ -2,7 +2,7 @@
 title: More details on how to use agdist 
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{A quick start to agdist}
+  %\VignetteIndexEntry{More details on how to use agdist}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 

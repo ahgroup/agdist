@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
-<link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
+<link href="deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Antigenic Distance Calculations for Influenza">
 <meta name="description" content="More about what it does (maybe more than one line). Continuation lines should be indented.">
 <meta property="og:description" content="More about what it does (maybe more than one line). Continuation lines should be indented.">
@@ -29,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="index.html">agdist</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,7 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="active nav-item"><a class="nav-link" href="index.html"><span class="fa fa-home fa-lg"></span></a></li>
+<li class="active nav-item"><a class="nav-link" href="index.html" aria-label="Return to homepage"><span class="fa fa-home fa-lg"></span></a></li>
 <li class="nav-item"><a class="nav-link" href="articles/quickstart.html">Get started</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-tutorials" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Tutorials</button>
@@ -51,7 +51,7 @@
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/ahgroup/agdist"><span class="fa fab fa-github"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/ahgroup/agdist" aria-label="View source code on GitHub"><span class="fa fab fa-github"></span></a></li>
       </ul>
 </div>
 
@@ -79,7 +79,7 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install if needed - package is not yet on CRAN</span></span>
 <span><span class="co"># remotes::install_github('ahgroup/agdist')</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ahgroup.github.io/agdist/" class="external-link">agdist</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ahgroup.github.io/agdist/index.html">agdist</a></span><span class="op">)</span></span>
 <span><span class="co"># load (and check) data</span></span>
 <span><span class="va">sequencedata</span> <span class="op">=</span> <span class="fu">read_sequence_file</span><span class="op">(</span><span class="st">"sequence-file.csv"</span><span class="op">)</span></span>
 <span><span class="co"># compute distances</span></span>
@@ -116,7 +116,8 @@
 <div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small>AGPL (&gt;= 3)</small></li>
 </ul>
 </div>
 
@@ -131,8 +132,8 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
+<li>Zane Billings <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-0184-6134" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Andreas Handel <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-4622-1146" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Zane Billings <br><small class="roles"> Author </small>  </li>
 </ul>
 </div>
 
@@ -143,7 +144,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Andreas Handel, Zane Billings.</p>
+  <p>Developed by Zane Billings, Andreas Handel.</p>
 </div>
 
 <div class="pkgdown-footer-right">
