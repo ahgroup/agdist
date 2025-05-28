@@ -3,7 +3,7 @@ Type: Package
 Title: Antigenic Distance Calculations for Influenza
 Description: More about what it does (maybe more than one line).
     Continuation lines should be indented.
-Version: 0.1.0
+Version: 0.2.0
 Date: 2025-05-07
 Authors@R: c(
     person("Andreas", "Handel", email = "andreas.handel@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-4622-1146") ),
@@ -19,9 +19,12 @@ Imports:
 Depends:
     R (>= 4.0.0)
 Suggests: 
+    ape,
     devtools,
     knitr,
+    phangorn,
     pkgdown,
+    Racmacs,
     rmarkdown,
     roxygen2
 VignetteBuilder: knitr
