@@ -4,7 +4,7 @@
 \alias{dist_substitution}
 \title{Pairwise Substitution Distances Between Amino Acid Sequences}
 \usage{
-dist_substitution(seqs, method = "grantham", ambiguous_residues = "xX?")
+dist_substitution(seqs, method = "grantham", ambiguous_residues = "xX?-")
 }
 \arguments{
 \item{seqs}{A named character vector of aligned amino acid sequences. All

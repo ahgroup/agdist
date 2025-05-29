@@ -18,6 +18,8 @@
 #'     \item `"cophenetic"` or `"tree"`: Computes distances based on a phylogenetic tree.
 #'     \item `"cartographic"` or `"cartography"`: Computes cartographic distances from a Racmacs map.
 #'     \item `"temporal"`: Computes temporal distances based on sequence names.
+#'     \item `"grantham"`: Computes Grantham's distance based on a substitution matrix.
+#'     \item `"substitution"`: Computes general weighted Hamming distances based on different substitution metrics which you can specify with the `substitution_matrix` argument.
 #'   }
 #' @param subtype (Optional) A character string indicating the subtype (e.g.,
 #'   `"H1"`, `"B"`) to use when computing p-epitope distances. Required for
@@ -42,6 +44,7 @@
 #'   \code{\link{tree_to_distances}} for `"cophenetic"` or `"tree"` distances,
 #'   \code{\link{racmaps_map_to_distances}} for `"cartographic"` or `"cartography"` distances,
 #'   \code{\link{dist_temporal}} for `"temporal"` distances.
+#'   \code{\link{dist_substitution}} for `"substitution"` and `"grantham"` distances.
 #'
 #' @examples
 #' \dontrun{calculate_distance(my_seq, "hamming")}
@@ -54,6 +57,7 @@ calculate_distance <- function(x,
                                subtype = NULL,
                                tree = NULL,
                                map = NULL,
+                               substitution_matrix = NULL,
                                ...) {
   dotslist <- list(...)
   args <- names(dotslist)
@@ -88,6 +92,17 @@ calculate_distance <- function(x,
       cli::cli_abort(paste0(
         "If {.arg method} is {.val {method}}, you must also specify the ",
         "{.arg subtype} argument."
+      ))
+    }
+  } else if (method == "grantham") {
+    out <- dist_substitution(x, ...)
+  } else if (method == "substitution") {
+    if (!missing(substitution_matrix)) {
+      out <- dist_substitution(x, method = substitution_matrix, ...)
+    } else {
+      cli::cli_abort(paste0(
+        "If {.arg method} is {.val {method}}, you must also specify the ",
+        "{.arg substitution_matrix} argument."
       ))
     }
   } else if (method == "cophenetic" | method == "tree") {

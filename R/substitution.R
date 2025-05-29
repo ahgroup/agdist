@@ -271,7 +271,7 @@ substitution <- function(seq1,
 #' @export
 dist_substitution <- function(seqs,
                               method = "grantham",
-                              ambiguous_residues = "xX?") {
+                              ambiguous_residues = "xX?-") {
   # Validate input
   validate_sequence_input_form(
     seqs,

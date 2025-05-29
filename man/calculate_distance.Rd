@@ -4,7 +4,15 @@
 \alias{calculate_distance}
 \title{Calculate pairwise distances between sequences using various methods}
 \usage{
-calculate_distance(x, method, subtype = NULL, tree = NULL, map = NULL, ...)
+calculate_distance(
+  x,
+  method,
+  subtype = NULL,
+  tree = NULL,
+  map = NULL,
+  substitution_matrix = NULL,
+  ...
+)
 }
 \arguments{
 \item{x}{A character vector of sequences (typically amino acid or nucleotide
@@ -22,6 +30,8 @@ Available options include:
   \item `"cophenetic"` or `"tree"`: Computes distances based on a phylogenetic tree.
   \item `"cartographic"` or `"cartography"`: Computes cartographic distances from a Racmacs map.
   \item `"temporal"`: Computes temporal distances based on sequence names.
+  \item `"grantham"`: Computes Grantham's distance based on a substitution matrix.
+  \item `"substitution"`: Computes general weighted Hamming distances based on different substitution metrics which you can specify with the `substitution_matrix` argument.
 }}
 
 \item{subtype}{(Optional) A character string indicating the subtype (e.g.,
@@ -63,4 +73,5 @@ This function acts as a dispatcher, validating the `method` input
   \code{\link{tree_to_distances}} for `"cophenetic"` or `"tree"` distances,
   \code{\link{racmaps_map_to_distances}} for `"cartographic"` or `"cartography"` distances,
   \code{\link{dist_temporal}} for `"temporal"` distances.
+  \code{\link{dist_substitution}} for `"substitution"` and `"grantham"` distances.
 }
