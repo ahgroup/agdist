@@ -160,7 +160,7 @@ get_pepitope_sites <- function(
       "B/Yamagata" = ,
       "B/Presplit" = ,
       "B/Unified" = ,
-      "B" = 14L,
+      "B" = 15L,
       TRUE ~ NA_integer_
     )
 
