@@ -44,6 +44,8 @@ methods `"p-epitope"` and `"p-all-epitope"`.}
 \item{map}{(Optional) A Racmacs map object used when `method =
 "cartographic"` or `"cartography"`.}
 
+\item{substitution_matrix}{(Optional) AH doesn't know what it does.}
+
 \item{...}{Additional arguments passed to the corresponding distance
 functions.}
 }

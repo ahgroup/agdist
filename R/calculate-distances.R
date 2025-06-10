@@ -28,6 +28,7 @@
 #'   `"tree"`.
 #' @param map (Optional) A Racmacs map object used when `method =
 #'   "cartographic"` or `"cartography"`.
+#' @param substitution_matrix (Optional) AH doesn't know what it does.
 #' @param ... Additional arguments passed to the corresponding distance
 #'   functions.
 #'
